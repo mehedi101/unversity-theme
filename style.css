@@ -2360,3 +2360,11 @@ body.admin-bar .search-overlay {
     border-bottom: none;
     margin-bottom: 0;
 }
+
+.post--pagination {
+    display: flex;
+    justify-content: center;
+    -webkit-column-gap: 1%;
+    -moz-column-gap: 1%;
+    column-gap: 1%;
+}
