@@ -16,11 +16,11 @@
             <div class="site-header__menu group">
                 <nav class="main-navigation">
                     <ul>
-                        <li><a href="<?php echo site_url('/about-us')  ; ?>">About Us</a></li>
+                        <li <?php echo (is_page('about-us') or wp_get_post_parent_id(0) == 16) ? 'class="current-menu-item"': null   ; ?>><a href="<?php echo site_url('/about-us')  ; ?>">About Us</a></li>
                         <li><a href="#">Programs</a></li>
                         <li><a href="#">Events</a></li>
                         <li><a href="#">Campuses</a></li>
-                        <li><a href="<?php echo site_url('/blog')  ; ?>">Blog</a></li>
+                        <li <?php echo (get_post_type() == "post") ? 'class="current-menu-item"': null ?>><a href="<?php echo site_url('/blog')  ; ?>">Blog</a></li>
                     </ul>
                 </nav>
                 <div class="site-header__util">
