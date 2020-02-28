@@ -16,16 +16,20 @@ function university_features(){
 }
 add_action('after_setup_theme', 'university_features');
 
+function university_events_query_adjustments($query){
+    $today = date('Y-m-d');
+    if(!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()){
+       // $query->set('posts_per_page',1);
+        $query->set('meta_key','event_date');
+        $query->set('orderby','meta_value');
+        $query->set('order','ASC');
+        $query->set('meta_query',[
+            'key' => 'event_date',
+            'compare' => '>=',
+            'value' => $today,
+            'type' => 'date'
+        ]);
 
-/*
-function university_post_types(){
-    register_post_type('events', [
-        'public' => true,
-        'labels' => [
-            'name' => 'Events'
-        ],
-        'menu_icon' => 'dashicons-calendar'
-    ]);
+    }
 }
-add_action('init', 'university_post_types');
-*/
+add_action('pre_get_posts', 'university_events_query_adjustments');
