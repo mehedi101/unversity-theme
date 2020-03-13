@@ -17,6 +17,14 @@ function university_features(){
 add_action('after_setup_theme', 'university_features');
 
 function university_events_query_adjustments($query){
+    if(!is_admin() AND is_post_type_archive('program') AND $query->is_main_query()){
+        $query->set('orderby', 'title');
+        $query->set('order', 'asc');
+        $query->set('posts_per_page', -1);
+
+    }
+
+
     $today = date('Y-m-d');
     if(!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()){
        // $query->set('posts_per_page',1);
