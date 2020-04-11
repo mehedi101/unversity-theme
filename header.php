@@ -19,7 +19,8 @@
                         <li <?php echo (is_page('about-us') or wp_get_post_parent_id(0) == 16) ? 'class="current-menu-item"': null   ; ?>>
                             <a href="<?php echo site_url('/about-us')  ; ?>">About Us</a>
                         </li>
-                        <li><a href="#">Programs</a></li>
+                        <li <?php echo  (get_post_type() == 'program')? 'class="current-menu-item"':null?>>
+                            <a href="<?php echo get_post_type_archive_link('program') ?>">Programs</a></li>
                         <li class="<?php echo ( (get_post_type() == 'event') OR is_page('past-events') )? 'current-menu-item': null ?>">
                             <a href="<?php echo get_post_type_archive_link('event'); ?>">Events</a>
                         </li>
