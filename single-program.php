@@ -114,6 +114,33 @@ pagePanner()?>
 
         </div>
 
+        <div class="related--campuses">
+            <?php
+            $relatedCampuses= get_field('related_campuses');
+
+            if($relatedCampuses){
+                echo '<hr class="section-break"/>';
+                echo sprintf("<h3 class='headline headline--medium'> 
+                             %s is available in these campuses:
+                            </h3> ",get_the_title());
+                    echo  "<ul class='link-list min-list'>";
+
+                foreach ($relatedCampuses as $campus){
+
+                    echo
+                        '<li><a href="'.get_the_permalink($campus).'">'
+                        .get_the_title($campus)
+                        .'</a> </li>';
+                }
+
+                echo "</ul>";
+
+            }
+
+            ?>
+
+        </div>
+
     </div>
 
 

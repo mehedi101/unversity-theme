@@ -24,7 +24,9 @@
                         <li class="<?php echo ( (get_post_type() == 'event') OR is_page('past-events') )? 'current-menu-item': null ?>">
                             <a href="<?php echo get_post_type_archive_link('event'); ?>">Events</a>
                         </li>
-                        <li><a href="#">Campuses</a></li>
+                        <li <?php echo (get_post_type() == 'campus') ?'class="current-menu-item"':null;  ?> >
+                        <a href="<?php echo get_post_type_archive_link('campus')?>">Campuses</a>
+                        </li>
                         <li <?php echo (get_post_type() == "post") ? 'class="current-menu-item"': null ?>><a href="<?php echo site_url('/blog')  ; ?>">Blog</a></li>
                     </ul>
                 </nav>
